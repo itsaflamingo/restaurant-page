@@ -1,0 +1,23 @@
+body {
+    margin: 0px;
+}
+#container {
+    background-color: pink;
+
+    height: 100vh;
+    width: 100vw;
+}
+.head {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#title {
+    background-image: url(../src/img/Bubblegum.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    height: 200px;
+    width: 550px;
+}
