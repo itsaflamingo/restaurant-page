@@ -2,7 +2,7 @@
 
 Restaurant Page assignment: https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page
 
-Live link to finished assignment: 
+Live link to finished assignment: https://itsaflamingo.github.io/restaurant-page/
 
 This assignment was first practice for using ES6 modules & Webpack. 
 
