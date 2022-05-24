@@ -1,26 +1,109 @@
+import {headerLoad, mainPageLoad, storePageLoad, removeHomePage, removeStorePage, contactPageLoad, removeContactPage} from "./store";
 
-const container = document.getElementById('container');
+let menuClick = 'home';
 
-const info = document.createElement('div');
-const head = document.createElement('div');
-head.setAttribute('class', 'head');
+if(menuClick === 'home') {
+    headerLoad();
+    mainPageLoad();
+}
 
-const title = document.createElement('div');
-title.setAttribute('id', 'title');
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button => button.addEventListener('click', (e) => toggle(e))));
 
-const locationDiv = document.createElement('div');
-const location = document.createElement('h3');
-const hoursDiv = document.createElement('div');
-const hours = document.createElement('h3');
+//constructor function
+function operatingHours(...days) {
+    
+    let hours;
+    this.days,
 
-container.appendChild(head);
-container.appendChild(info);
+    this.schedule = function() {
+        let info = []; 
 
-head.appendChild(title);
+        days.forEach((day) => {
+            hours = '8am to 3pm';
+            if(day === 'Saturday' || day === 'Sunday') {
+                hours = '8am to 6pm';
+            }
+            if(day === 'Monday' || day === 'Tuesday') {
+                hours = 'closed';
+            }
+            info += ` ${day}: ${hours} <br> <br>`
+            
 
-info.appendChild(locationDiv);
-info.appendChild(hoursDiv);
+            return info;
+        })
+        return info;
+    }
 
-locationDiv.appendChild(location);
-hoursDiv.appendChild(hours);
-console.log(title);
+    this.displaySchedule = function() {
+        const info = this.schedule();
+
+        const infoDisplay = document.querySelector('#info-display');
+        infoDisplay.innerHTML = `${info}`;
+
+    }
+}
+
+let display = new operatingHours('Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday');
+display.displaySchedule();
+
+function home() {
+    if(menuClick === 'store') {
+        removeStorePage();
+    }
+    if(menuClick === 'contact') {
+        removeContactPage();
+    }
+
+    menuClick = 'home';
+    mainPageLoad();
+    display.displaySchedule();
+}
+function store() {
+
+    if(menuClick === 'home') {
+        removeHomePage();
+    }
+    if(menuClick === 'contact') {
+        removeContactPage();
+    }
+
+    menuClick = 'store';
+
+    storePageLoad();
+}
+function contact() {
+
+    if(menuClick === 'home') {
+        removeHomePage();
+    }
+    if(menuClick === 'store') {
+        removeStorePage();
+    }
+
+    menuClick = 'contact';
+
+    contactPageLoad();
+}
+
+
+function toggle(e) {
+    if(e.target.id === 'home') {
+        home();
+        return;
+    }
+    if(e.target.id === 'store') {
+        store();
+        return;
+    }
+    if(e.target.id === 'contact') {
+        contact();
+        return;
+    }
+    return;
+}
+
+export {menuClick, operatingHours}
+
+
+
