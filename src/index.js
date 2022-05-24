@@ -1,4 +1,4 @@
-import {headerLoad, mainPageLoad, storePageLoad, removeHomePage, removeStorePage, contactPageLoad, removeContactPage} from "./store";
+import {headerLoad, mainPageLoad, storePageLoad, removeHomePage, removeStorePage, contactPageLoad, removeContactPage} from "./page-load";
 
 let menuClick = 'home';
 
